@@ -5,14 +5,33 @@ from django.utils import timezone
 
 
 class Actor(models.Model):
-    fName = models.CharField(max_length=30)
-    lName = models.CharField(max_length=30)
+    fName = models.CharField(max_length=30, verbose_name='First Name')
+    lName = models.CharField(max_length=30, verbose_name='Last Name')
     job_position = models.CharField(max_length=50)
+
+    def created(self):
+        self.created_date = timezone.now()
+        self.save()
+
+    def updated(self):
+        self.updated_date = timezone.now()
+        self.save()
 
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
     industry = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = 'Companies'
+
+    def created(self):
+        self.created_date = timezone.now()
+        self.save()
+
+    def updated(self):
+        self.updated_date = timezone.now()
+        self.save()
 
 
 class ActorEmployment(models.Model):
