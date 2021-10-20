@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls import url
+from rest_framework_jwt.views import obtain_jwt_token
+from api import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', obtain_jwt_token),
+    path('', views.report_list),
+    url(r'^api/reports/$', views.report_list),
 ]
