@@ -17,6 +17,9 @@ class Actor(models.Model):
         self.updated_date = timezone.now()
         self.save()
 
+    def __str__(self):
+        return self.fName + ' ' + self.lName
+
 
 class Company(models.Model):
     name = models.CharField(max_length=50)
@@ -32,6 +35,9 @@ class Company(models.Model):
     def updated(self):
         self.updated_date = timezone.now()
         self.save()
+
+    def __str__(self):
+        return self.name
 
 
 class ActorEmployment(models.Model):
@@ -57,3 +63,6 @@ class Report(models.Model):
     def updated(self):
         self.updated_date = timezone.now()
         self.save()
+
+    def __str__(self):
+        return self.title
