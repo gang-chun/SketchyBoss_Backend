@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3!o@o7m7cwy5=+t3n-ju*cd8!0qo#2w)5n)^m+14o2q-t9%q(8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://sketchyboss.herokuapp.com/']
 
 
 # Application definition
