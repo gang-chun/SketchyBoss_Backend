@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3!o@o7m7cwy5=+t3n-ju*cd8!0qo#2w)5n)^m+14o2q-t9%q(8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
