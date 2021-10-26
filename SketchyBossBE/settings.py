@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import datetime
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-3!o@o7m7cwy5=+t3n-ju*cd8!0qo#2w)5n)^m+14o2q-t9%q(8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'https://sketchyboss.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'sketchyboss.herokuapp.com']
 
 
 # Application definition
@@ -165,3 +166,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Activate django-heroku
+django_heroku.settings(locals())
