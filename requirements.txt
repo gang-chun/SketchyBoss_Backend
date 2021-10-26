@@ -10,4 +10,4 @@ gunicorn
 django-heroku
 whitenoise
 dj-database-url
-psycopg
+psycopg2-binary==2.8.6
