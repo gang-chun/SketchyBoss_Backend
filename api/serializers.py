@@ -6,7 +6,7 @@ class ReportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Report
-        fields = ('title', 'content', 'city', 'state', 'actor', 'company', 'created_date', 'updated_date')
+        fields = ('title', 'content', 'city', 'state', 'actor', 'company', 'user', 'created_date', 'updated_date')
 
 
 class ActorSerializer(serializers.ModelSerializer):
