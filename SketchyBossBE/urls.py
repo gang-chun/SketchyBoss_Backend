@@ -25,4 +25,5 @@ urlpatterns = [
     path('auth/', obtain_jwt_token),
     path('', views.report_list),
     url(r'^api/reports/$', views.report_list),
+    url(r'^api/companies/$', views.company_list),
 ]
