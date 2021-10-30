@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -52,6 +53,7 @@ class Report(models.Model):
     state = models.CharField(max_length=2)
     actor = models.ForeignKey('Actor', on_delete=models.CASCADE)
     company = models.ForeignKey('Company', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', default=User, on_delete=models.CASCADE)
 
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(default=timezone.now)
