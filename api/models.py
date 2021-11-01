@@ -68,3 +68,12 @@ class Report(models.Model):
 
     def __str__(self):
         return self.title
+
+    def company_name(self):
+        return self.company.name
+
+    def user_name(self):
+        return self.user.username
+
+    def actor_name(self):
+        return self.actor.fName + ' ' + self.actor.lName

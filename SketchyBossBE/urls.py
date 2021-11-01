@@ -25,5 +25,11 @@ urlpatterns = [
     path('auth/', obtain_jwt_token),
     path('', views.report_list),
     url(r'^api/reports/$', views.report_list),
-    # url(r'^api/companies/$', views.company_list),
+    url(r'^api/reports/(?P<pk>[0-9]+)$', views.get_report),
+    path('companies/', views.company_list),
+    url(r'^api/companies/$', views.company_list),
+    url(r'^api/companies/(?P<pk>[0-9]+)$', views.get_company),
+    path('actors/', views.actor_list),
+    url(r'^api/actors/$', views.actor_list),
+    url(r'^api/actors/(?P<pk>[0-9]+)$', views.get_actor),
 ]
