@@ -73,7 +73,7 @@ def get_report(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ReportSerializer(instance=report, data=request.data, partial=True)
+        serializer = ReportSerializer(report, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
