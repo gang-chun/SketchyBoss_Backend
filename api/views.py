@@ -13,7 +13,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 def report_list(request):
     permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
-        reports = Report.objects.all()
+        reports = Report.objects.filter(user_id=request.user)
+
         serializer = ReportSerializer(reports, context={'request': request}, many=True)
         return Response({'data': serializer.data})
 
