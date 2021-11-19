@@ -3,12 +3,10 @@ from .models import Report, Actor, Company
 
 
 class ReportSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Report
-        fields = ('id', 'title', 'content', 'city', 'state', 'actor', 'company', 'user', 'created_date',
-                  'updated_date')
-
+        fields = ('id', 'title', 'content', 'city', 'state', 'actor', 'company', 'created_date',
+                  'updated_date', 'user')
 
 class ActorSerializer(serializers.ModelSerializer):
 
