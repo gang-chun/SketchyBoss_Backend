@@ -4,6 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 
@@ -13,11 +16,13 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 def report_list(request):
     permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
-        reports = Report.objects.all()
+        reports = Report.objects.filter(user_id=request.user)
         serializer = ReportSerializer(reports, context={'request': request}, many=True)
         return Response({'data': serializer.data})
 
     elif request.method == 'POST':
+        user = get_object_or_404(User, username=request.user)
+        request.data['user'] = user.id
         serializer = ReportSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -73,7 +78,7 @@ def get_report(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ReportSerializer(report, context={'request': request})
+        serializer = ReportSerializer(report, context={'request': request}, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
