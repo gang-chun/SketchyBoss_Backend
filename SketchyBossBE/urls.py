@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^api/actors/$', views.actor_list),
     url(r'^api/actors/(?P<pk>[0-9]+)$', views.get_actor),
     path('api/password_reset/', include('django_rest_passwordreset.urls')),
+    url(r'^api/company/reports/(?P<pk>[0-9]+)$', views.company_report_list),
 ]
