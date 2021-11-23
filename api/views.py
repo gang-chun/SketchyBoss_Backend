@@ -14,7 +14,7 @@ from collections import OrderedDict
 
 
 @csrf_exempt
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'DELETE'])
 def report_list(request):
     permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
@@ -29,7 +29,11 @@ def report_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        reports = Report.objects.filter(user_id=request.user).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
@@ -118,7 +122,6 @@ def get_company(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@csrf_exempt
 @api_view(['GET', 'POST'])
 def company_report_list(request, pk):
     permission_classes = IsAuthenticatedOrReadOnly
