@@ -56,7 +56,6 @@ from django.views.decorators.csrf import csrf_protect
 @csrf_exempt
 @api_view(['GET', 'POST', 'DELETE'])
 def report_list(request):
-    permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         reports = Report.objects.filter(user_id=request.user)
         serializer = ReportSerializer(reports, context={'request': request}, many=True)
@@ -70,7 +69,7 @@ def report_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     elif request.method == 'DELETE':
-        reports = Report.objects.filter(user_id=request.user).delete()
+        Report.objects.filter(user_id=request.user).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -79,7 +78,6 @@ def report_list(request):
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def company_list(request):
-    permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         companies = Company.objects.all()
         serializer = CompanySerializer(companies, context={'request': request}, many=True)
@@ -94,12 +92,9 @@ def company_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def actor_list(request):
-    permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         actor = Actor.objects.all()
         serializer = ActorSerializer(actor, context={'request': request}, many=True)
@@ -164,7 +159,6 @@ def get_company(request, pk):
 
 @api_view(['GET', 'POST'])
 def company_report_list(request, pk):
-    permission_classes = IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         reports = Report.objects.all().filter(company_id=pk)
         serializer = ReportSerializer(reports, context={'request': request}, many=True)
@@ -178,6 +172,7 @@ def company_report_list(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def get_actor(request, pk):
