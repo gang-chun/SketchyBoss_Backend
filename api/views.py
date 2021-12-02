@@ -3,14 +3,54 @@ from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
+from rest_framework.decorators import permission_classes
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from collections import OrderedDict
+from rest_framework.generics import GenericAPIView
+from braces.views import CsrfExemptMixin
 
+
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+
+
+# @api_view(['POST'])
+# class RegisterView(GenericAPIView):
+#     permission_classes = ()
+#     authentication_classes = ()
+#     serializer_class = UserSerializer
+#
+#     @method_decorator(login_required)
+#     def dispatch(self, *args, **kwargs):
+#         return super(RegisterView, self).dispatch(*args, **kwargs)
+#
+#     def post(self, request, *args, **kwargs):
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Create your views here.
+# @csrf_exempt
+# @api_view(['POST'])
+# def registration_view(request):
+#     if request.method == 'POST':
+#         serializer = RegistrationSerializer(data=request.data)
+#         data = {}
+#
+#         if serializer.is_valid():
+#             user = serializer.save()
+#             data['response'] = "Successfully registered a new user"
+#             data['email'] = user.email
+#             data['username'] = user.username
+#         else:
+#             data = serializer.errors
+#         return Response(data)
 
 
 @csrf_exempt

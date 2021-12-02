@@ -12,3 +12,6 @@ whitenoise
 dj-database-url
 psycopg2-binary==2.8.6
 django-rest-passwordreset
+
+django-braces~=1.15.0
+django-allauth~=0.46.0
