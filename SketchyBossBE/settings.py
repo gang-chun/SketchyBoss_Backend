@@ -45,10 +45,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'django.contrib.sites',
-    'rest_auth',
+    'dj_rest_auth',
     'allauth',
     'allauth.account',
-    'rest_auth.registration',
+    'dj_rest_auth.registration',
     'django_rest_passwordreset',
     'django_filters',
     'corsheaders',
@@ -155,8 +155,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
@@ -201,4 +201,3 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'deletelater023@gmail.com'
 EMAIL_HOST_PASSWORD = 'deletePass023'
-

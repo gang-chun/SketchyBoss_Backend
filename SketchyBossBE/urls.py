@@ -31,8 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', obtain_jwt_token),
 
-    path('rest-auth/', include('rest_auth.urls')),
-    url('api/rest-auth/registration', include('rest_auth.registration.urls')),
+    path('rest-auth/', include('dj_rest_auth.urls')),
+    url('api/rest-auth/registration', include('dj_rest_auth.registration.urls')),
 
     ## The following APIs do not work
     url(r'api/password/reset/$', PasswordResetView.as_view(),

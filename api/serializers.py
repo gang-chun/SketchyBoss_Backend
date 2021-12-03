@@ -99,7 +99,6 @@ from django.contrib.auth.models import User
 #         return user
 
 
-
 class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report

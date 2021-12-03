@@ -3,19 +3,19 @@ from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
-from rest_framework.decorators import permission_classes
+# from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
+# from rest_framework.decorators import permission_classes
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from django.db.models import Count
-from collections import OrderedDict
-from rest_framework.generics import GenericAPIView
-from braces.views import CsrfExemptMixin
+# from django.db.models import Count
+# from collections import OrderedDict
+# from rest_framework.generics import GenericAPIView
+# from braces.views import CsrfExemptMixin
 
 
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_protect
+# from django.contrib.auth.decorators import login_required
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.csrf import csrf_protect
 
 
 # @api_view(['POST'])
