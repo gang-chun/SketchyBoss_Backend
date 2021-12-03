@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
 from api import views
-from rest_auth.views import (
+from dj_rest_auth.views import (
     LoginView, LogoutView, UserDetailsView, PasswordChangeView,
     PasswordResetView, PasswordResetConfirmView
 )
